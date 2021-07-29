@@ -9,47 +9,44 @@ int main()
     {
         ll a, b, x, y, n;
         cin >> a >> b >> x >> y >> n;
-        ll newa = 0, newb = 0, prod1 = 0;
-        ll na = 0, nb = 0, pd1 = 0;
+        ll na = 0, nb = 0;
+        ll ma = 0, mb = 0;
 
-        if (a - x <= n)
+        if (a - x < n)
         {
-            newa = x;
-            if (b - (n - (a - x)) <= 0)
+            na = x;
+            if (b - y < n - (a - x))
             {
-                newb = y;
+                nb = y;
             }
             else
             {
-                newb = b - (n - (a - x));
+                nb = b - (n - (a - x));
             }
         }
         else
         {
-            newa = a - n;
-            newb = b;
+            na = a - n;
+            nb = b;
         }
-        prod1 = newa * newb;
-
-        if (b - y <= n)
+        if (b - y < n)
         {
-            nb = y;
-            if (a - (n - (b - y)) <= 0)
+            mb = y;
+            if (a - x < n - (b - y))
             {
-                na = x;
+                ma = x;
             }
             else
             {
-                na = a - (n - (b - y));
+                ma = a - (n - (b - y));
             }
         }
         else
         {
-            nb = b - n;
-            na = a;
+            mb = b - n;
+            ma = a;
         }
-        pd1 = na * nb;
 
-        cout << min(pd1, prod1) << endl;
+        cout << min((ma * mb), (na * nb)) << endl;
     }
 }
