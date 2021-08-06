@@ -18,52 +18,44 @@ void solve()
         cin >> b[i];
     }
 
-    int idx_i = 0, idx_j = 0;
+    bool pos = false, neg = false;
 
-    for (ll i = n - 1; i >= 0; i--)
+    if (a[0] != b[0])
     {
+        cout << "NO" << endl;
+        return;
+    }
 
-        if (a[i] != b[i])
+    for (ll i = 1; i < n; i++)
+    {
+        if (a[i - 1] == 1)
         {
-            idx_j = i;
+            pos = true;
+        }
+        if (a[i - 1] == -1)
+        {
+            neg = true;
+        }
 
-            if (b[i] + a[i] < 0)
+        if (a[i] > b[i])
+        {
+            if (!neg)
             {
-                for (int j = i - 1; j >= 0; j--)
-                {
-                    if (a[j] < 0)
-                    {
-                        idx_i = j;
-                        a[i] = b[i];
-                        cout << a[i] << " " << a[j] << endl;
-                        break;
-                    }
-                }
+                cout << "NO" << endl;
+                return;
             }
-            else
+        }
+
+        if (a[i] < b[i])
+        {
+            if (!pos)
             {
-                for (int j = i - 1; j >= 0; j--)
-                {
-                    if (a[j] > 0)
-                    {
-                        idx_i = j;
-                        a[i] = b[i];
-                        break;
-                    }
-                }
+                cout << "NO" << endl;
+                return;
             }
         }
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        cout << a[i] << " " << b[i] << endl;
-        if (a[i] != b[i])
-        {
-            cout << "NO" << endl;
-            return;
-        }
-    }
     cout << "YES" << endl;
 }
 int main()
