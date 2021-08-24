@@ -13,7 +13,7 @@ int main()
         s[a] = i;
     }
 
-    // for (auto x : s)
+       // for (auto x : s)
     // {
     //     cout << x.first << " " << x.second << endl;
     // }
